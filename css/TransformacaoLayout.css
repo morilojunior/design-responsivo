@@ -1,0 +1,505 @@
+/*********************************TRANSFORMAÇÂO PARA LAYOUT FLUIDO********************************/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container 
+{
+  margin: 0 auto;
+  /*width: 960px;*/
+    width: 75.5%;      
+  /* De px transformamos para % porcentagem e essa medida convertida ficou em 67.5%
+  porém a melhor maneira é usar 100% na tela isso é o mais ideal.
+  */
+}
+
+h1 {
+  /*font-size: 32px;*/
+  /*Essa medida será convertida tambem com base no padrão que é 16 
+  então ficaria 32/16 = 2em*/
+    font-size: 2em;
+}
+
+
+.content {
+  /*margin: 15px 0;
+  O contexto é o container que temos
+  Aqui usamos a mesma regra de 15/960 = 0,015625 x 100 = 1.5625
+  (MARGENS FLUIDAS PRONTA)
+  */
+  margin: 1.5625%;
+}
+
+.content-main {
+  float: left;
+  /*width: 593px;
+  593/960 = 61.7708 */
+  width:61.7708%;
+}
+
+.hero {
+  /*margin: 25px 0;*/
+  margin: 4.2158%;
+}
+.brief {
+ /* margin: 5px 0;
+ 5/593 = 0.8431% arredondano fica 1% (temos sempre que fazer assim quando der
+                                      um numero muito quebrado)
+ */
+ margin: 1%;
+}
+
+.last-contents {
+  /*font-size: 12px;*/
+  font-size: .75em;
+}
+
+.last-content-call {
+  float: left;
+  /*margin: 15px 15px 15px 0;*/
+  margin: 2.5295% 2.5295% 2.5295% 0;
+  /*width: 280px;*/;
+  width: 47.2175%;
+}
+.last-content-call .brief {
+  /*margin: 5px;*/
+  margin:1.7857% 0;
+}
+
+.last-content-call .secondary-title {
+  margin-bottom: 0;
+}
+
+
+.content-sidebar {
+  background-color:#F0F0F0;
+  float: right;
+  /*padding: 10px;*/
+  padding: 1.0416%;
+  /*width: 322px;*/
+  width: 33.5416%;
+}
+
+.main-nav ul {
+  list-style-type: none;
+}
+
+.main-nav li {
+  background-color: #F9F9F9;
+  float: left;
+  /*margin: 15px;*/
+  margin: 4.6583%;
+  outline: 1px solid #DEDEDE;
+  text-align: center;
+  /*width: 130px;*/
+  width: 40.3726%;
+}
+
+.main-nav a {
+  display: block;
+  /*padding: 10px;*/
+  padding:7.6923%;
+  text-decoration: none;
+}
+
+.main-footer {
+  background-color: #F0F0F0;
+  clear: both;
+  float: left;
+  /*font-size: 12px;*/
+  font-size: .75em;
+  /*margin: 15px 0;*/
+  margin: 1.5625% 0;;
+  /*padding: 15px;*/
+  padding: 1.5625%;
+  text-align: center;
+  /*width: 100%;*/
+  width: 100%;
+}
+
+/*-------------------IMAGEM RESPONSIVO(flexivel)--------------------- */
+
+img{
+  /*obs.: Essa propriedade diz que a imagem poderá ter até 100% de largura de 
+    acordo com o elemento em que ema estiver contido*/
+  max-width: 100%;
+}
+/*Existem tecnicas para serem usadas de carregamento de imagens como usar diversas imagens
+e não somente uma imagem com o tamanho grande e pesado para dispositivos moveis sendo 
+a conexão muito mais lenta  como Riloadr, jQuery Pictue, Picturefill entre outras*/
+
+/*  Existem três formatos de imagens mais usados na web que é o GIF,JPG e PNG
+ GIF- Mais usado para imagens animadas
+ JPG- Usado para imagens com alta qualidade de cores e nitidez como fotografias.
+ PNG- É meio que uma junção das duas acima suportando transparência.
+ SVG- É uma linguagem de marcação para descrever gráficos bidimensionais e imagens
+ Uma das grandes caracteristicas não perde a qualidade a serem ampliados.
+ Icon Fonts- São imagens de icones, só que é uma fonte onde cada caracter é uma fonte
+ Sprites-Varias imagens em uma só onde posicionamos pela propriedade background-position
+
+*/
+
+/*-------------------VIDEO RESPONSIVO(flexivel)---------------------
+  A Mesma regra se aplica para videos e imagens como a anterior o video
+  tambem usa a mesma regra
+*/
+
+/*obs.: Essa propriedade diz que o video poderá ter até 100% de largura de 
+  acordo com o elemento em que ema estiver contido*/
+img,iframe,object,embed,video{
+  max-width:100%;
+  height:auto;
+}
+
+/*---------------------------MEDIA QUERIES-----------------------------*/
+
+/*--Media Types
+
+São os tipos de midias que podemos reconheçer no css,
+Ao acessarem a pagina web reconheçemos de qual dispósitivo está sendo acessado assim
+Aplicando as configurações desejadas para o layout:
+
+all:serve para todos os dispositivos 
+
+braille:Para dar feedback quando se usa algum dispositivo tátil
+
+embossed:Impressoras em brailler paginadas.
+
+handheld:Dispositiveis pequenos de banda limitada
+
+print:Para material paginado e para documentos videsualizados na tela no modo
+       Visualização de Impressão.
+
+projection:Destinado a apresentaçõesd projetadas como, por exemplo, projetores.
+
+screen:Destinado, principalmente, para telas coloridas de computadores,
+
+speech:Para sintetizadores de voz.
+
+tty:Dispositivos de "grade fixa"! para exibição de caracteres,
+     com o teletypes, terminais e alguns outros."
+
+tv:Aparelho "tipo TV" (baixa resolução, cores,scroll,limitado,som).
+
+EXEMPLO: <link rel="stylesheet" type="text/css" media="print,handheld" href="print_handheld_style.css">
+Nesse caso esse estilo só iria entrar em ação se o dispositivo fosse um handheld.
+
+Isso podendo definir diversas regras EXEMPLO:
+
+@media print{
+font-size:10px;
+}
+@media screen{
+font-size:13px;
+}
+..............
+
+OBS.: Mas com a evolução dos smartphones, 
+os dispositivos não entrão em nenhuma das categorias por que a qualidade de um
+dispositivo móvel está proxima a do desktop, por tanto surgem a MEDIA QUERIES!
+exemplo:
+Em várias folhas de CSS (Chamando quando entra na regra de < que 320 e nó maximo 320px)
+<link rel="stylesheet" type="text/css" media"screen and (max-width:320px)" href="320.css">
+
+
+Em uma única folha de CSS:
+
+@media screen and(min-width: 320px){
+
+  body{
+   margem:auto 0;
+  }  
+}
+
+@media screen and(min-width:480px){
+.......
+}
+
+----Paramentros para trabalhar com Media Queries
+
+**aspect-ratio
+  Defini a proposção de pixels na horizontal e vertical devem ter
+
+@media screen and (aspect-ratio: 16(px_horizontal)/9(px_vertial));
+**************
+
+**color
+  Indica o numero de bits por componente de cor do dispositivo.
+
+@media screen and (color);//colorido
+@media screen and (min-color:4);//minimo de bits de cor é 4
+@media screen and (max-color:16);//maximo de bits de cor é 16
+**************
+
+**color-index
+  Descreve o número de entradas na tabela de cores do dispositivo.
+
+@media screen and (color-index);//dispositivos de cores indexadas
+@media screen and (min-color-index:2)//minimo de cores indexadas é 2 cores.
+**************
+
+**device-aspect-ratio
+  Descreve a proporção do display do dispositivo. 
+Aplicar regra em dispositivos widescreen
+@media screen and (device-aspect-ratio: 16(px_horizontal)/9(px_vertial), device-aspect-ratio: 16(px_horizontal)/10(px_vertial));
+**************
+
+**device-height
+  Descreve a altura, em pixels, do display do aparelho.
+Por exemplo, aplicar uma folha de estilo a um documento quando
+visualizado nume tela menor que tem 480px de altura:
+<link rel="stylesheet" type="text/css" media="screen and (max-device-height:379px)" href="style.css">
+**************
+
+**device-width
+    Descreve a largura, em pixels, do display do aparelho.  
+Por exemplo, aplicar uma folha de estilo a um documento quando
+visualizado nume tela menor que tem 799px de largura:
+<link rel="stylesheet" type="text/css" media="screen and (max-device-width:379px)" href="style.css">
+*************
+
+**grid
+    Determina se se trata de um dispositivo de grade
+ou um dispositivo de mapa de bits(bitmap).Ou se o dispositivo é baseado em
+grade(tal como um terminal TTY ou visor do telefone, com apenas uma fonte),
+o valor é 1; caso contrário, é o.
+
+@media(grid){
+
+}
+Para aplicar um stilo em dispositivos móveis com display de 15 caracteres ou menos:
+@media handheld and (grid) and (max-width:15em){
+
+}
+Nomte que a unidade "em" tem um significado especial para dispositivos assim,
+já que a largura exta de um "em" não pode ser determinada, assume-se que 1em 
+é a largura de uma célula de grade horizontal e a altura de uma célula vertical.
+*************
+
+**height
+  Altura, em pixels, da janela do navegador.
+exemplo especificar regras para dispositivos com a largura da janela do browser
+em 300px.
+
+@media screen and @media (height:300px){
+....
+}
+
+Ou com altura menor que 600px
+@media screen and @media (max-height:599px){
+....
+}
+************
+
+**monochrome
+  Indica o número de bits por pixal em dispositivos monomacromáticos(escala de cinza)
+Se o dispositivo não for monocromático, o valor é zero.
+Por exemplo, para aplicar estilos em qualquer dispositivo monocromático:
+@media all and (monochrome){
+....
+}
+Para aplicar estilos em qualquer dispositivo monocromático com
+pelo menos 2 bits por pixel:
+@media all and (min-monochrome:2){
+..
+}
+************
+
+**orientation
+  Indica se o dispositivo está em modo "paisagem" (land-scape), com a tela mais
+larga que alta, ou "retrato" (portrait),com a tela é mais alta que larga.
+  Então,para se aplicar regras para dispositivos que estão no modo "paisagem",
+basta usar:
+@media all and(orientation:landscape){
+....
+}
+************
+
+**resolution
+  Trata sobre a resolução (densidade de pixels)do dispositivos,que pode ser especificada
+em pontos por polegada(dpi) ou pontos por centimetro (dpcm).Por exemplo:
+@media (resolution:72dpi){
+..
+}
+
+@media (min-resolution:118dpcm){
+..
+}
+Uma <resolução> sem algum dos prefixos "min-" ou "max" nunca vai atuar em dispositivos
+com pixels não-quadrados(non-square pixels).
+************
+
+**scan
+
+Trata sobre o processo de escaneamento que um dispositivo do tipo TV pode fazer.
+Aplica apenas em televisões com escaneamento.
+@media tv and (scan:progressive){
+
+}
+************
+**width
+Largura em pixels,da janela do navegador sendo usado.
+Para meios contínuos, é a largura do viewport,incluindo o tamanho da barra de
+rolagem ;para meios paginados, é a largura da "page box" da impressora.<comprimento>
+não pode ser um valor negativo.
+@media screen and media (width:640px){
+...
+}
+Ou com a largura menor que 768px
+@media screen and @media (max-width:767px){
+...
+}
+************
+
+-----Operadores Lógicos----
+Operadores usados em media querys
+
+'and e or
+ not
+ only'
+
+AND e OR
+
+-and expressa o operador lógico AND e a "vírgula" expressa o operador lógico OR
+exe: @media screen and (color), print and (color)
+
+NOT
+
+-Nega o resultado
+exe:<link rel="stylesheet" media="not screen and (color)" href="style.css">
+
+ONLY
+
+-A palavra -chave only pode ser usada para esconder as folhas de estilo
+de agentes de usuário mais antigos .Os agentes devem começar as consultas de mídia com
+only como se a palavra-chave only não estivesse presente.
+
+
+
+Obs.: Apesar de tantos paramentros de media query na verdade poucos são usados atualmente
+A maioria usado é de largura e altura do display e a orientação do dispositivo.
+
+
+/*----------------------------BREAKPOINTS----------------------------------*/
+/*
+  Breakpoints são os pontos em que deve tratar o web design de forma diferenciada 
+para que a experiência de quem está visitando o site seja a melhor e mais eficiente 
+possível.
+  Existem vários modelos das quantidades de breakpoints, porém não
+existe um padrão a seguir.
+MODELOS:
+320 and UP
+Less Framework
+Skeleton
+Twitter Bootstrap
+entre outros..
+/*----------------------------FIM BREAKPOINTS----------------------------------*/
+
+/*----------------------------DICAS----------------------------------*/
+/*
+  Evite Erros ,não use valor negativo como -10px isso causa erro
+  
+  É recomendado ussar somente uma folha de stylo com vários breakpoints:
+  1-uma única requisição HTTP.
+  Mas dependendo do projeto podemos usar em arquivos separados usando 
+  media query na tag link.
+  1-várias requisições arquivos separado facil manutenção.
+  
+/******************MEDIA QUERYS "SOBREPOSTAS" ou "EMPILHADAS"*******************/  
+/*
+É possivel que com vários breakpoints definidos, possamos sobrepor ou empilhar as 
+regras definidas com media query.
+
+---------------EMPILHADA------------------
+Exemplo:
+@media all and (min-width:500px){
+  body{
+    background:red;
+    color:#FFF; 
+  }
+}
+@media all and (min-width:700px){
+  body{
+    background:red;
+    color:#FFF; 
+  }
+}
+perceba que as especificações de media não são mutuamente exclusivas-
+quer dizer, se a viewport no momento do acesso for 800px,ambas as regras
+entrarão em ação, assim o efeito que se obtem é uma bagunça.
+
+----------------SOBREPOSTA----------------
+@media all and (min-width:700px){
+  body{
+    background:red;
+    clor:white;
+  }
+
+}
+
+@media all and (min-width:500px){
+  body{
+    background: blue;
+    font-family:serif;
+  }
+}
+
+OBS.: Nesse caso só ira aplicar a regra de 500px;
+
+
+-----Mais recomendado
+
+@media all and (min-width:500px) and (max-width:699x){
+  body{
+    background:blue;
+    font-family:serif;
+  }
+
+}
+
+@media all and (min-width:700px){
+  body{
+    background: red;
+    color:#FFF;
+  }
+}
+OBS.: usar o empilhado e ir limitando com o MAX.
+*/
+
+
+@media all and (max-width:640px){
+  .content-main{
+    float:none;
+  }
+  .last-content-call{
+    float:none;
+    width:auto;
+  }
+  .content-sidebar{
+    float:none;
+    clear:both;
+    /*width: 40.3726%;*/
+    width: 100%;
+  }
+}
+
+@media all and (max-width:320px){
+  .main-nav li{
+    float:none;
+    width:auto;
+  }
+}
+
+@media all and (max-width:320px){
+  .main-nav li{
+    float:none;
+    width:auto;
+  }
+}
+

@@ -1,0 +1,57 @@
+/*----------------------Medidas Usadas---------------------
+ Para desenvolver um layout responsivo temos que usar medidas relativas e não medidas fixas,
+   Temos 4 medidas mais usadas porcentagem,em,ponto,pixel
+   no nosso caso iremos usar porcentagem para tamanhos e elementos, Em para tamanho de fontes
+
+              Porcentagem: 
+   toma o elemento pai como referencia.
+                  Em:
+   toma a propriedades font-size do elemento pai como referencia.
+*/
+
+/*--------------------Formula--------------------
+Formula de Elemento
+
+A formula para converter medidas absolutas (fixas) em relativas é 
+     Alvo/Contexto = Resultado
+Alvo = Elemento-alvo com a medida atual.
+Contexto = Onde o elemento-alvo está (baseado no elemento pai).
+Resultado = O valor relativo que se está procurando.
+
+Formula de Fonte.
+fonte atual em px / 16 = resultado
+Exemplo de conversão de fonte: fonte de 24px/16px = 1,5 em;
+
+*/
+/*----------------------Meta TAG(VIEWPORT)---------------------
+
+A função da meta tag é descrever o documento e informações sobre a página
+as metas tags devem ser filhas de head no HTML.
+exe: <meta name="nome-da-meta" content="onteudo-da-meta">
+
+Os dispositivos menores tentam ajustar o layout de um site o zoom do display
+atraves do viewport porém quando o site é preparado para dispositivos menores 
+isso pode atrapalhar.
+
+<meta name="viewport" content="">
+
+em content: posso informa resolucoes personalizadas aos visitantes
+diversas informações como:
+width:defini a largura do viewport
+height:defini a altura do viewport
+initial-scale: defini a escala iniial (zoom) inicial da viewport
+
+para definirmos isso de forma automatica podemos usar para largura a seguinte declaração
+LARGURA:
+<meta name="viewport" content="width=device-width">
+
+e para estabilizarmos o zoom incluimos :
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+ESSA CONFIGURAÇÃO É CONSIDERADA PERFEITA 
+
+existe uma tabela com as possiveis propriedades para a viewport em ow.ly/balZP
+*/
+
+/*-------------------TRANSFORMAÇÂO DE LAYOUT FIXO PARA FLUIDO---------------*/
+/* Acompanhe isso no arquivo de transformacaoLayout.php*/
